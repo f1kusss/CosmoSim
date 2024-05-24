@@ -1,16 +1,23 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
-    [SerializeField] private float rotationSpeed = 90f;
 
-	public Transform Ship;
-	[SerializeField] private List<Engine> Engines = new List<Engine>();
+    [SerializeField] float _rotationSpeed = 90;
 
-    private void Update()
+    [Header("Links")]
+    public Transform spaceShip;
+    [SerializeField] private List<Engine> Engines = new List<Engine>();
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
     {
         Turn();
         Move();
@@ -18,20 +25,21 @@ public class ShipMovement : MonoBehaviour
 
     private void Turn()
     {
-		float pitch = rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
-		float yaw = rotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
-		float roll = rotationSpeed * Input.GetAxis("Roll") * Time.deltaTime;
-		Ship.Rotate(pitch, yaw, roll);
+        float yaw = _rotationSpeed * Input.GetAxis("Horizontal") * Time.deltaTime;
+        float pitch = _rotationSpeed * Input.GetAxis("Vertical") * Time.deltaTime;
+        float roll = _rotationSpeed * Input.GetAxis("Roll") * Time.deltaTime;
+
+        spaceShip.Rotate(pitch, yaw, roll);
     }
 
     private void Move()
     {
-        Vector3 resThrust = new Vector3();
+        Vector3 resultingThrust = new Vector3();
         foreach (var engine in Engines)
         {
-            resThrust += engine.Thrust();
+            resultingThrust += engine.Thrust();
         }
 
-        Ship.Translate(resThrust);
+        spaceShip.Translate(resultingThrust);
     }
 }

@@ -481,11 +481,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 354337910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
+  m_Script: {fileID: 11500000, guid: b01c2c5326401ea4ba79b3898338567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 354337914}
-  speedRotation: 7
+  target: {fileID: 0}
+  _speedRotation: 10
+  speedMoving: 0.5
   waitForMoveSunDelay: 0.1
 --- !u!114 &354337916
 MonoBehaviour:
@@ -499,9 +500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2130615620}
-  speedRotation: 5
-  waitForMoveSunDelay: 0.1
 --- !u!1 &550070357
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +514,7 @@ GameObject:
   - component: {fileID: 550070358}
   - component: {fileID: 550070362}
   - component: {fileID: 550070364}
+  - component: {fileID: 550070365}
   m_Layer: 0
   m_Name: Moon
   m_TagString: Untagged
@@ -621,9 +620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 550070361}
-  speedRotation: 3
-  waitForMoveSunDelay: 0.1
 --- !u!114 &550070364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,8 +632,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 586287464}
-  speedRotation: 10
+--- !u!114 &550070365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550070357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01c2c5326401ea4ba79b3898338567b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  _speedRotation: 10
+  speedMoving: 0.5
   waitForMoveSunDelay: 0.1
 --- !u!1 &586287460
 GameObject:
@@ -756,11 +765,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 586287460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
+  m_Script: {fileID: 11500000, guid: b01c2c5326401ea4ba79b3898338567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 586287464}
-  speedRotation: 5
+  target: {fileID: 0}
+  _speedRotation: 10
+  speedMoving: 0.5
   waitForMoveSunDelay: 0.1
 --- !u!114 &586287466
 MonoBehaviour:
@@ -774,9 +784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2130615620}
-  speedRotation: 4
-  waitForMoveSunDelay: 0.1
 --- !u!1 &665737726
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,7 +967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f541a38cd634d44b79c628c230a123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
 --- !u!1 &1391695330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,10 +1116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c95bcc791dac7b468336c880f294d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canFire: 0
-  MaxDistance: 100
-  _waitTimeFiring: 0.1
-  _lineRenderer: {fileID: 0}
 --- !u!1 &1604361737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,7 +1227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f541a38cd634d44b79c628c230a123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
 --- !u!1 &1926966902
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,11 +1343,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926966902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
+  m_Script: {fileID: 11500000, guid: b01c2c5326401ea4ba79b3898338567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1926966906}
-  speedRotation: 4
+  target: {fileID: 0}
+  _speedRotation: 10
+  speedMoving: 0.5
   waitForMoveSunDelay: 0.1
 --- !u!114 &1926966908
 MonoBehaviour:
@@ -1360,9 +1362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2130615620}
-  speedRotation: 6
-  waitForMoveSunDelay: 0.1
 --- !u!1 &1972722102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,11 +1526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319a5b87ac0e2c44da924ba909314d8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
-  Ship: {fileID: 1611509856}
-  Engines:
-  - {fileID: 1749382875}
-  - {fileID: 848241917}
 --- !u!1 &2130615616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,11 +1645,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2130615616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1023a5f6b720dfe4389c629adb6f2871, type: 3}
+  m_Script: {fileID: 11500000, guid: b01c2c5326401ea4ba79b3898338567b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speedRotation: 10
+  _speedRotation: 10
+  speedMoving: 0.5
   waitForMoveSunDelay: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

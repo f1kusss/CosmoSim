@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class Engine : MonoBehaviour
 {
-	[SerializeField] private float moveSpeed = 0.5f;
+    [SerializeField] private float _moveSpeed = 0.5f;
 
-	public Vector3 Thrust()
-	{
-		return Vector3.forward * moveSpeed * Time.deltaTime;
-	}
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public Vector3 Thrust()
+    {
+        return Vector3.forward * _moveSpeed * Time.deltaTime;
+    }
 }
