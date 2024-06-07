@@ -1,54 +1,72 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
+using UnityEditor;
 using UnityEngine;
 
-public class ShipWeapons : MonoBehaviour
+namespace Cosmosim
 {
-    public Spaceship _Spaceship;
-    public List<IWeapon> Weapons = new List<IWeapon>();
-
-    public float MaxDistanceToTarget = 250f;
-    private void Awake()
+    public class ShipWeapons : MonoBehaviour
     {
-        if ( _Spaceship == null )
-            _Spaceship = GetComponentInParent<Spaceship>();
-        Weapons = GetComponentsInChildren<IWeapon>().ToList();
-    }
+        public SpaceShip spaceShip;
+        public Rigidbody ShipRigidbody;
+        public List<IWeapons> weaponsList = new List<IWeapons>();
+        public float _fireDistance = 250f;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        [ContextMenu("InitWeapons")]
+        public void InitWeapons()
         {
-            foreach(var weapon in Weapons)
+            weaponsList = GetComponentsInChildren<IWeapons>().ToList();
+            foreach (var weapon in weaponsList)
             {
-                FireWeapons();
+                weapon.Initialize(new DataWeaponExtrinsic()
+                    { ShipRigidbody = ShipRigidbody, GameAgent = spaceShip.shipAgent });
             }
         }
-    }
 
-    private void FireWeapons()
-    {
-        RaycastHit hit;
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
-
-        if (Physics.Raycast(ray, out hit, MaxDistanceToTarget))
+        public void Awake()
         {
-            foreach (var weapon in Weapons)
-            {
-                weapon.FireWeapon(hit.point);
-                //weapon.FireWeapon(transform.position + transform.forward * MaxDistanceToTarget);
+            InitWeapons();
+            if (spaceShip == null)
+                spaceShip = GetComponentInParent<SpaceShip>();
+            if (ShipRigidbody == null)
+                ShipRigidbody = GetComponentInParent<Rigidbody>();
+        }
 
+
+        void OnEnable()
+        {
+            spaceShip.InputShipWeapons.OnAttacInput += FireWeapons;
+        }
+
+        private void OnDisable()
+        {
+            spaceShip.InputShipWeapons.OnAttacInput -= FireWeapons;
+        }
+
+        public void FireWeapons()
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+            if (Physics.Raycast(ray, out hit, _fireDistance))
+            {
+                foreach (var weapon in weaponsList)
+                {
+                    weapon.FireWeapon(hit.point);
+                }
+
+                Debug.Log("Fire IF");
             }
-        } 
-        else
-        {
-            foreach (var weapon in Weapons)
+            else
             {
-                weapon.FireWeapon(ray.origin + ray.direction * MaxDistanceToTarget);
-                //weapon.FireWeapon(transform.position + transform.forward * MaxDistanceToTarget);
+                foreach (var weapon in weaponsList)
+                {
+                    weapon.FireWeapon(ray.origin + ray.direction * _fireDistance);
+                }
 
+                Debug.Log("Fire ELSE");
             }
         }
     }
